@@ -1,12 +1,13 @@
 /*
  *
- *  Filename: 0-main.c
- *  Auth: kingsley
+ * Filename: 0-main.c
+ * Auth: kingsley
  *
  */
 
 
 #include "main.h"
+
 /**
  * main - main
  * Return: 0
