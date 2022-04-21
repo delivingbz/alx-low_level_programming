@@ -1,20 +1,21 @@
-/*
-* File: 6-puts2.c
-* Auth: kingsley
-*/
-
 #include "main.h"
 
-/** puts2 - Prints one char out of two of a string.
-* @str: The string containing characters.
+/**
+*  *puts2 - prints every character of a string
+* @str: A pointer to an int that will be changed
+*
+* Return: void which means it is correct
 */
 
 void puts2(char *str)
 {
-	int index = 0, len = 0;
-	while (str[index++])
-	len++;
-	for (index = 0; index < len; index += 2)
-	_putchar(str[index]);
-	_putchar('\n');
+	int a;
+
+	for (a = 0; str[a] != '\0'; a++)
+	{
+		if (a % 2 == 0)
+			_putchar (str[a]);
+	}
+
+	_putchar ('\n');
 }
