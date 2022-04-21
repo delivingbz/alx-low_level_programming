@@ -1,25 +1,29 @@
-/*
-* File: 7-puts_half.c
-* Auth: kingsleey
-*/
-
 #include "main.h"
 
 /**
-* puts_half - Prints half of a string.
-* @str: The string to be printed.
+* puts_half - prints every other character of a string
+* @str: A pointer to an int that will be changed
+*
+* Return: void which means our answer is correct
 */
+
 void puts_half(char *str)
 {
-	int index = 0, len = 0, n;
+	int i, last;
 
-	while (str[index++])
-	len++;
-	if ((len % 2) == 0)
-	n = len / 2;
-	else
-		n = (len + 1) / 2;
-		for (index = n; index < len; index++)
-		_putchar(str[index]);
-		_putchar('\n');
-}
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+
+	last = (i + 1) / 2;
+
+	for (i = last; str[i]; i++)
+	{
+		_putchar (str[i]);
+	}
+
+	_putchar ('\n');
+
+
