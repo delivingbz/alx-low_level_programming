@@ -1,32 +1,31 @@
+/*
+* File: 2-strncpy.c
+* Auth: Brennan D Baraban
+*/
+
 #include "main.h"
+
 /**
-* _strncat - concatenates two strings
-* @dest: A pointer to a character that will be changed
-* @src: A pointer to a character that will be changed
-* @n: value
-* Return: dest
- */
-
-char *_strncat(char *dest, char *src, int n)
-
+* _strncpy - Copies at most an inputted number
+*            of bytes from string src into dest.
+* @dest: The buffer storing the string copy.
+* @src: The source string.
+* @n: The maximum number of bytes to copied from src.
+*
+* Return: A pointer to the resulting string dest.
+*/
+char *_strncpy(char *dest, char *src, int n)
 {
-	int i, j;
+	int index = 0, src_len = 0;
 
-	i = 0;
-	while (dest[i] != '\0')
-	{
-		i++;
-	}
+	while (src[index++])
+		src_len++;
 
-	j = 0;
-	while (j < n && src[j] != '\0')
-	{
-		dest[i] = src[j];
-		j++;
-		i++;
-	}
+	for (index = 0; src[index] && index < n; index++)
+		dest[index] = src[index];
 
-	dest[i] = '\0';
+	for (index = src_len; index < n; index++)
+		dest[index] = '\0';
 
 	return (dest);
 }
