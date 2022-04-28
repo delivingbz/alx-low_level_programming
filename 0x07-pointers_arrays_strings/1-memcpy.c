@@ -10,16 +10,16 @@
 char *_memcpy(char *dest, char *src, unsigned int n)
 
 {
-	unsigned int i;
+	unsigned int 1;
 
 	i = 0;
-	while (i < n)  /*Delacring WHILE*/
+	while (i < n)
 	{
-		*(dest + i) = *(src + i); /*add 1 position dest and src*/
+		*(dest + i) = *(src + i);
 		i++;
 
-	} /*END WHILE*/
+	}
 
 
 	return (dest);
-}  
+}
