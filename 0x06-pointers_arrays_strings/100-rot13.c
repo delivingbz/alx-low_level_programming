@@ -15,15 +15,15 @@ char *rot13(char *s)
 	{
 
 		for (i = 0; i < 52; i++)
-	{
-		if (*(s + count) == alphabet[i])
-	{
-		*(s + count) = rot13[i];
-		break;
-	}
-	}
+		{
+			if (*(s + count) == alphabet[i])
+			{
+				*(s + count) = rot13[i];
+				break;
+			}
+		}
 		count++;
-}
+	}
 
-	return (s);
-}}
+return (s);
+}
