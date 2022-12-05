@@ -1,41 +1,52 @@
 #include "search_algos.h"
-
 /**
- * linear_skip - Searches using linear skip.
- * @list: A pointer to the  head of the linked list to search.
- * @value: The value to search for.
- *
- * Return: NULL, a pointer to the first node where the value is located.
+ * jump_list - search for a number in a jump again way
+ * @list: the input
+ * @size: the size
+ * @value: the value to seaach
+ * Return: the index of the value, or -1 when the values is not present
  */
-skiplist_t *linear_skip(skiplist_t *list, int value)
+listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-	skiplist_t *node, *jump;
+	int s, e, st;
+	listint_t *actual, *p;
 
-	if (!list)
+	if (list == NULL)
 		return (NULL);
-
-	for (node = jump = list; jump->next && jump->n < value;)
+	s = 0;
+	e = size - 1;
+	st = sqrt(size);
+	actual = list;
+	while (s < e)
 	{
-		node = jump;
-		if (jump->express)
-		{
-			jump = jump->express;
-			printf("Value checked at index [%ld] = [%d]\n",
-					jump->index, jump->n);
-		}
-		else
-		{
-			while (jump->next)
-				jump = jump->next;
-		}
+		s += st;
+		p = actual;
+		while (actual->next && (s != (int)actual->index))
+			actual = actual->next;
+		printf("Value checked at index [%li] = [%i]\n", actual->index, actual->n);
+		if (actual->n >= value)
+			return (linearSearch(p, actual, value));
 	}
-
-	printf("Value found between indexes [%ld] and [%ld]\n",
-			node->index, jump->index);
-
-	for (; node->index < jump->index && node->n < value; node = node->next)
-		printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
-	printf("Value checked at index [%ld] = [%d]\n", node->index, node->n);
-
-	return (node->n == value ? node : NULL);
+	return (linearSearch(p, actual, value));
+}
+/**
+ * linearSearch - search for a number in a linearSearch way
+ * @s: the input
+ * @e: the begining
+ * @value: the value to seaach
+ * Return: the index of the value, or -1 when the values is not present
+ */
+listint_t *linearSearch(listint_t *s, listint_t *e, int value)
+{
+	printf("Value found between indexes [%li] and [%li]\n",
+			s->index, e->index);
+	while (s != e->next)
+	{
+		printf("Value checked at index [%li] = [%i]\n",
+				s->index, s->n);
+		if (s->n == value)
+			return (s);
+		s = s->next;
+	}
+	return (NULL);
 }
